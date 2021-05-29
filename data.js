@@ -1,7 +1,7 @@
 window.FriendsData = {
   'characters': [
     { 
-      'name': 'Chandler Bing',
+      'name': 'Chandler',
       'lastname': 'Bing',
       'gender': 'male',
     },
