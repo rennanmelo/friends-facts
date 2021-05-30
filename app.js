@@ -35,17 +35,60 @@
     );
   }
 
+  function SeasonSelect(props) {
+    function seasonOptions() {
+      return props.seasons.map(season => {
+        return <option value={season} key={season}>{season}</option>
+      })
+    }
+
+    function onSeasonChange(event) {
+      props.handleSeasonChange(event.target.value);
+    }
+
+    return (
+      <div className='field-group'>
+        <label htmlFor='season-options'>Season:</label>
+        <select
+          defaultValue={props.season}
+          name='season_options'
+          id='season-options'
+          onChange={onSeasonChange}
+        >
+          {seasonOptions()}
+        </select>
+      </div>
+    );
+  }
+
   function Friends(props) {
-    let [character, setCharacter] = React.useState(window.FriendsData.characters[0]);
-    let [characters, setCharacters] = React.useState(window.FriendsData.characters);
+    let myData = window.FriendsData;
+    let [character, setCharacter] = React.useState(myData.characters[0]);
+    let [characters, setCharacters] = React.useState(myData.characters);
+    let [season, setSeason] = React.useState(myData.seasons[0]);
+    let [seasons, setSeasons] = React.useState(myData.seasons);
 
     function handleCharacterChange(selectedCharacter) {
-      let availableCharacters = window.FriendsData.characters;
-      let newSelectedCharacter = availableCharacters.find(char => {
-        return char.name === selectedCharacter;
+      let availableCharacters = myData.characters;
+      let newSelectedCharacter = availableCharacters.find(character => {
+        return character.name === selectedCharacter;
       });
+      let availableSeasons = myData.byCharacter[selectedCharacter];
 
       setCharacter(newSelectedCharacter);
+      setSeasons(availableSeasons);
+    }
+
+    function handleSeasonChange(selectedSeason) {
+      let availableCharactersNames = myData.bySeason[selectedSeason];
+      let availableCharacters = availableCharactersNames.map(charName => {
+        return myData.characters.find(character => {
+          return character.name === charName;
+        })
+      });
+      
+      setSeason(selectedSeason);
+      setCharacters(availableCharacters);      
     }
 
     return (
@@ -55,6 +98,11 @@
           characters={characters}
           character={character}
           handleCharacterChange={handleCharacterChange}
+        />
+        <SeasonSelect 
+          season={season}
+          seasons={seasons}
+          handleSeasonChange={handleSeasonChange}
         />
       </div>
     );
