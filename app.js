@@ -5,7 +5,11 @@
     let character = props.character.name.toLowerCase();
 
     return (
-      <img src={`/assets/${character}.jpg`} alt={`${props.character.name} ${props.character.lastname}`} />
+      <img 
+        src={`/assets/${character}.jpg`}
+        alt={`${props.character.name} ${props.character.lastname}`} 
+        className='friends-app__character-image'
+      />
     );
   }
 
@@ -39,7 +43,7 @@
     function seasonOptions() {
       return props.seasons.map(season => {
         return <option value={season} key={season}>{season}</option>
-      })
+      });
     }
 
     function onSeasonChange(event) {
@@ -92,7 +96,7 @@
     }
 
     return (
-      <div className='my-app'>
+      <div className='friends-app'>
         <Character character={character} />
         <CharacterSelect 
           characters={characters}
