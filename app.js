@@ -92,7 +92,7 @@
     }
 
     return (
-      <div>
+      <div className='my-app'>
         <Character character={character} />
         <CharacterSelect 
           characters={characters}
