@@ -6,6 +6,7 @@ body {
 
 html {
   font-size: 10px;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 .friends-app {
@@ -39,5 +40,29 @@ html {
 .friends-app__character-image {
   max-width: 50rem;
   border-radius: 1rem;
-  border: 4px solid #FFFFFF;
+  border: 0.4rem solid #FFFFFF;
+}
+
+.friends-app__filters {
+  margin-left: 2.5rem;
+}
+
+.friends-app__field-group {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  border: none;
+  margin-bottom: 1.5rem;
+}
+
+.friends-app__field-group select {
+  width: 100%;
+  height: 4rem;
+  font-size: 2rem;
+}
+
+.friends-app__field-group label {
+  font-size: 4rem;
+  color: #FFFFFF;
+  margin-bottom: 0.5rem;
 }

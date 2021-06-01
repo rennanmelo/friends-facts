@@ -13,6 +13,23 @@
     );
   }
 
+  function Filter(props) {
+    return (
+      <form className='friends-app__filters'>
+        <CharacterSelect 
+          characters={props.characters}
+          character={props.character}
+          handleCharacterChange={props.handleCharacterChange}
+        />
+        <SeasonSelect
+          season={props.season}
+          seasons={props.seasons}
+          handleSeasonChange={props.handleSeasonChange}
+        />
+      </form>
+    );
+  }
+
   function CharacterSelect(props) {
     function characterOptions() {
       return props.characters.map(char => {
@@ -25,7 +42,7 @@
     }
 
     return (
-      <div className='field-group'>
+      <fieldset className='friends-app__field-group'>
         <label htmlFor='character-options'>Character:</label>
         <select
           defaultValue={props.character}
@@ -35,7 +52,7 @@
         >
           {characterOptions()}
         </select>
-      </div>
+      </fieldset>
     );
   }
 
@@ -51,7 +68,7 @@
     }
 
     return (
-      <div className='field-group'>
+      <fieldset className='friends-app__field-group'>
         <label htmlFor='season-options'>Season:</label>
         <select
           defaultValue={props.season}
@@ -61,7 +78,7 @@
         >
           {seasonOptions()}
         </select>
-      </div>
+      </fieldset>
     );
   }
 
@@ -98,14 +115,12 @@
     return (
       <div className='friends-app'>
         <Character character={character} />
-        <CharacterSelect 
+        <Filter
           characters={characters}
           character={character}
-          handleCharacterChange={handleCharacterChange}
-        />
-        <SeasonSelect 
           season={season}
           seasons={seasons}
+          handleCharacterChange={handleCharacterChange}
           handleSeasonChange={handleSeasonChange}
         />
       </div>
