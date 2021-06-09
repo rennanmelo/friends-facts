@@ -1,4 +1,4 @@
-App with interesting and funny facts of the TV series Friends.
+App with interesting and funny facts of the characters from the TV series Friends.
 
 It will have a filter with the characteres and the seasons.
 
